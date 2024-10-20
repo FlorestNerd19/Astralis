@@ -10,12 +10,18 @@ config_version=5
 
 [application]
 
-config/name="jogo do espaco"
-run/main_scene="res://scenes/world_01.tscn"
+config/name="Astralis"
+run/main_scene="res://main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
 
-[display]
+[aseprite_importers]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
+aseprite_executable_path="C:/Program Files/Aseprite/Aseprite.exe"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/nklbdev.aseprite_importers/plugin.cfg")
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
