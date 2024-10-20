@@ -1,0 +1,84 @@
+[gd_scene load_steps=7 format=3 uid="uid://bl3l6agews48g"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_twatw"]
+[ext_resource type="Texture2D" uid="uid://drjkd7gnmpw3y" path="res://assets/bcaf52a0-a653-4a54-a1a7-5b1df73bf922_2.png" id="2_hmynl"]
+[ext_resource type="Theme" uid="uid://bx5ew11l5r0ch" path="res://temas/config_menu.tres" id="3_ifjjp"]
+[ext_resource type="FontFile" uid="uid://2bqe2el7ao7a" path="res://font/StepalangeShort-p7GZd.otf" id="4_io8js"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2lnu6"]
+texture = ExtResource("2_hmynl")
+
+[sub_resource type="Theme" id="Theme_gfdpw"]
+
+[node name="Menus" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -56.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_twatw")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_2lnu6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 64.0
+offset_top = -70.0
+offset_right = 256.0
+offset_bottom = 56.0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("3_ifjjp")
+theme_override_constants/separation = 5
+
+[node name="PlayButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../ExitButton")
+focus_neighbor_bottom = NodePath("../ConfigButton")
+text = "Jogar"
+
+[node name="ConfigButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../PlayButton")
+focus_neighbor_bottom = NodePath("../ExitButton")
+theme = SubResource("Theme_gfdpw")
+text = "Configurar"
+
+[node name="ExitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../ConfigButton")
+focus_neighbor_bottom = NodePath("../PlayButton")
+text = "Sair"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -172.0
+offset_top = 96.0
+offset_right = 174.0
+offset_bottom = 210.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_io8js")
+theme_override_font_sizes/font_size = 120
+text = "Astralis
+"
+
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="VBoxContainer/PlayButton" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/ConfigButton" to="." method="_on_config_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ConfigButton" to="VBoxContainer/PlayButton" method="_on_config_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="VBoxContainer/PlayButton" method="_on_exit_button_pressed"]
